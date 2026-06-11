@@ -1,0 +1,228 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .site {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #f5f0fc;
+    color: #2d1f4a;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 40px;
+    border-bottom: 0.5px solid rgba(140,90,200,0.18);
+    background: #fff;
+  }
+  .nav-logo { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #7040b0; font-family: 'Georgia', serif; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9070b8; text-decoration: none; }
+  .nav-links a.active { color: #5a2d9a; font-weight: 500; }
+  .nav-lang { font-size: 11px; letter-spacing: 0.1em; color: #b8a0d0; }
+  .new-tag { display: inline-block; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #9070b8; border: 0.5px solid rgba(144,112,184,0.4); padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; border-bottom: 0.5px solid rgba(140,90,200,0.12); background: #fff; }
+  .hero-text { padding: 80px 48px 80px 40px; display: flex; flex-direction: column; justify-content: center; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #a078c8; margin-bottom: 22px; }
+  .hero-h1 { font-size: 36px; font-weight: 400; line-height: 1.22; color: #2d1f4a; margin-bottom: 22px; font-style: italic; }
+  .hero-h1 em { font-style: normal; color: #7040b0; }
+  .hero-question { font-size: 15px; line-height: 1.75; color: #6a5285; margin-bottom: 36px; font-style: italic; }
+  .btn-primary { display: inline-block; padding: 13px 28px; border: 1px solid #9070b8; color: #5a2d9a; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; background: transparent; width: fit-content; cursor: pointer; }
+  .hero-img { overflow: hidden; min-height: 420px; position: relative; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(1.05) saturate(0.8); }
+  .hero-img::after { content:''; position:absolute; inset:0; background: linear-gradient(to right, #fff 0%, transparent 25%); pointer-events:none; }
+
+  /* SECCIÓN BASE */
+  .section { padding: 72px 40px; }
+  .section-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #a078c8; margin-bottom: 18px; }
+  .divider { width: 32px; height: 1px; background: #c4a8e8; margin-bottom: 20px; }
+
+  /* SOBRE MÍ */
+  .sobre { background: #f0e8fb; border-top: 0.5px solid rgba(140,90,200,0.1); border-bottom: 0.5px solid rgba(140,90,200,0.1); }
+  .sobre-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; max-width: 900px; }
+  .sobre-img-box { overflow: hidden; border: 0.5px solid rgba(160,120,200,0.25); aspect-ratio: 3/4; }
+  .sobre-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(1.05) saturate(0.85); }
+  .sobre-content { display: flex; flex-direction: column; justify-content: center; }
+  .sobre-h2 { font-size: 24px; font-weight: 400; color: #2d1f4a; margin-bottom: 20px; font-style: italic; }
+  .sobre-text { font-size: 14px; line-height: 1.85; color: #5a4275; margin-bottom: 14px; }
+  .creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .cred-pill { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #7040b0; border: 0.5px solid rgba(112,64,176,0.3); padding: 5px 12px; background: #fff; }
+
+  /* FILOSOFÍA */
+  .filosofia { text-align: center; background: #fff; border-bottom: 0.5px solid rgba(140,90,200,0.1); }
+  .filosofia-inner { max-width: 680px; margin: 0 auto; }
+  .filosofia-pull { font-size: 19px; line-height: 1.72; color: #2d1f4a; font-style: italic; margin-bottom: 26px; }
+  .filosofia-pull em { color: #7040b0; font-style: normal; }
+  .filosofia-body { font-size: 14px; line-height: 1.9; color: #6a5285; }
+
+  /* SERVICIOS */
+  .servicios { background: #f5f0fc; border-bottom: 0.5px solid rgba(140,90,200,0.1); }
+  .servicios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(160,120,200,0.18); margin-top: 40px; border: 0.5px solid rgba(160,120,200,0.18); }
+  .servicio-card { background: #fff; padding: 36px 28px; display: flex; flex-direction: column; }
+  .servicio-tag { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #a078c8; margin-bottom: 14px; }
+  .servicio-h3 { font-size: 18px; font-weight: 400; color: #2d1f4a; margin-bottom: 6px; font-style: italic; }
+  .servicio-sub { font-size: 11px; letter-spacing: 0.1em; color: #b8a0d0; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 0.5px solid rgba(160,120,200,0.2); }
+  .servicio-body { font-size: 13px; line-height: 1.8; color: #6a5285; flex: 1; margin-bottom: 22px; }
+  .btn-ghost { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #9070b8; text-decoration: none; display: flex; align-items: center; gap: 6px; width: fit-content; }
+  .btn-ghost::after { content: '→'; }
+
+  /* TESTIMONIOS */
+  .testimonios { background: #f0e8fb; border-bottom: 0.5px solid rgba(140,90,200,0.1); }
+  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .test-card { border: 0.5px solid rgba(160,120,200,0.22); padding: 26px 22px; background: #fff; }
+  .test-stars { color: #a078c8; font-size: 12px; margin-bottom: 12px; letter-spacing: 3px; }
+  .test-text { font-size: 13px; line-height: 1.8; color: #6a5285; font-style: italic; margin-bottom: 16px; }
+  .test-name { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #a078c8; }
+
+  /* CTA */
+  .cta-final { text-align: center; padding: 90px 40px; background: #ede4f8; border-bottom: 0.5px solid rgba(140,90,200,0.1); }
+  .cta-quote { font-size: 17px; line-height: 1.78; font-style: italic; color: #2d1f4a; max-width: 620px; margin: 0 auto 28px; }
+  .cta-quote em { color: #7040b0; font-style: normal; }
+  .cta-sub { font-size: 13px; color: #8868aa; margin-bottom: 34px; }
+
+  /* FOOTER */
+  .footer { padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid rgba(140,90,200,0.12); background: #fff; }
+  .footer-logo { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #c4a8e8; }
+  .footer-links { display: flex; gap: 20px; list-style: none; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.1em; color: #c4a8e8; text-decoration: none; }
+</style>
+
+<div class="site">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Holistic Energy Coach</div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Inicio</a></li>
+      <li><a href="#">Sobre mí <span class="new-tag">nuevo</span></a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+    <span class="nav-lang">ES · FR</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Coaching Energético · Método Sinergia Integral</p>
+      <h1 class="hero-h1">Transforma tu energía,<br><em>transforma tu vida</em></h1>
+      <p class="hero-question">¿Vives bajo tu propio mando o eres el rehén de una historia que ni siquiera te pertenece?</p>
+      <a class="btn-primary" href="#">Reserva tu sesión inicial</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/AR0Mw9l9goSZVOal/whatsapp-image-2026-02-27-at-1.05.26-pm-iMIpZ3CuAEEX2qYh.jpeg" alt="Holistic Energy Coach" />
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="section sobre">
+    <div class="sobre-inner">
+      <div>
+        <div class="sobre-img-box">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/AR0Mw9l9goSZVOal/whatsapp-image-2026-02-27-at-1.06.00-pm-yzQuDDb6im4gg8sd.jpeg" alt="Coach" />
+        </div>
+      </div>
+      <div class="sobre-content">
+        <p class="section-label">Sobre mí <span class="new-tag">agregar</span></p>
+        <div class="divider"></div>
+        <h2 class="sobre-h2">Soy [Nombre], coach energética y guía de transformación</h2>
+        <p class="sobre-text">Aquí va la presentación personal de la coach: su historia, por qué eligió este camino, qué la hace diferente. Puede ser breve pero auténtica — 3 a 4 párrafos que le den rostro humano al método.</p>
+        <p class="sobre-text">Formación, certificaciones y años de experiencia acompañando a personas a recuperar su coherencia biológica y energética.</p>
+        <div class="creds">
+          <span class="cred-pill">Practitioner Registrada — Flores de Bach</span>
+          <span class="cred-pill">Biomagnetismo</span>
+          <span class="cred-pill">Sinergia Integral</span>
+          <span class="cred-pill">Ballet Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILOSOFÍA -->
+  <section class="section filosofia">
+    <div class="filosofia-inner">
+      <p class="section-label" style="text-align:center">El método</p>
+      <div class="divider" style="margin:0 auto 20px"></div>
+      <p class="filosofia-pull">Tu síntoma no es el enemigo; es el último grito de auxilio de tu biología. Ignorar la raíz emocional de lo que te sucede no es <em>"seguir adelante"</em> — es permitir que un programa invisible siga consumiendo tu energía vital.</p>
+      <p class="filosofia-body">A través del método Sinergia Integral, no perdemos el tiempo parcheando síntomas superficiales. Vamos directo a la masa conflictual: el código oculto que bloquea tu realidad y te mantiene estancado. Si no descodificas el origen, estás condenado a repetir el mismo ciclo. Recuperar tu coherencia biológica y energética no es una opción — es la única forma de retomar el control de tu existencia.</p>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section servicios">
+    <p class="section-label">Servicios</p>
+    <div class="divider"></div>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <span class="servicio-tag">Cuerpo</span>
+        <h3 class="servicio-h3">Bio-Regeneración<br>& Movimiento</h3>
+        <p class="servicio-sub">Biomagnetismo · Infrarrojos · Ballet Free</p>
+        <p class="servicio-body">Restauramos la base biológica. Mediante Biomagnetismo e Infrarrojos, apoyamos la recuperación física y el equilibrio energético, complementándolo con Ballet Free para devolverle al cuerpo su consciencia y movilidad natural.</p>
+        <a class="btn-ghost" href="#">Ver más</a>
+      </div>
+      <div class="servicio-card">
+        <span class="servicio-tag">Mente</span>
+        <h3 class="servicio-h3">Sinergia Integral<br>y Psique</h3>
+        <p class="servicio-sub">Método propio · Biodescodificación</p>
+        <p class="servicio-body">Exploramos la raíz detrás del síntoma. Mi método de Sinergia Integral te ayuda a identificar los programas inconscientes y conflictos biológicos que mantienen tu vida en repetición, facilitando una nueva comprensión para tu bienestar.</p>
+        <a class="btn-ghost" href="#">Ver más</a>
+      </div>
+      <div class="servicio-card">
+        <span class="servicio-tag">Espíritu</span>
+        <h3 class="servicio-h3">Sistema Bach<br>y Armonía</h3>
+        <p class="servicio-sub">Practitioner registrada · Certificación internacional</p>
+        <p class="servicio-body">Equilibrio emocional con certificación internacional. Como Practitioner Registrada, utilizo las esencias florales para armonizar los estados de ánimo y conectar tu personalidad con tu esencia más profunda.</p>
+        <a class="btn-ghost" href="#">Ver más</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="section testimonios">
+    <p class="section-label">Testimonios <span class="new-tag">agregar</span></p>
+    <div class="divider"></div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Aquí irá el testimonio real de una clienta. Unas pocas líneas honestas sobre su experiencia y transformación son más poderosas que cualquier texto de marketing."</p>
+        <p class="test-name">— Nombre, Ciudad</p>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Segundo testimonio real. Idealmente menciona un resultado concreto: lo que cambió en su vida, cómo se sintió antes y después del proceso."</p>
+        <p class="test-name">— Nombre, Ciudad</p>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Tercer testimonio. Con 2 o 3 de estos reales ya basta para generar confianza en visitantes nuevos que no conocen el trabajo."</p>
+        <p class="test-name">— Nombre, Ciudad</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <p class="section-label">Comienza tu transformación</p>
+    <div class="divider" style="margin:0 auto 26px"></div>
+    <p class="cta-quote">"Mi compromiso es guiarte hacia la coherencia absoluta. A través de la Sinergia Integral, no solo atendemos el síntoma, sino que restauramos el <em>diseño original</em> de tu bienestar, alineando tu biología, tu mente y tu espíritu para que recuperes el mando de tu realidad."</p>
+    <p class="cta-sub">En Holistic Energy Coach, te acompañamos en tu viaje hacia el equilibrio y la armonización de tu energía, mejorando así tu calidad de vida. Reserva tu cita y comienza tu transformación.</p>
+    <a class="btn-primary" href="#">Reservar sesión inicial</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">Holistic Energy Coach</div>
+    <ul class="footer-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+    <span style="font-size:11px;color:#d4c0ea">© 2026</span>
+  </footer>
+
+</div>
